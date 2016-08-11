@@ -1,0 +1,20 @@
+syntax: glob
+
+*.~
+*.marks
+*.txt
+TIP-*
+./*.xml
+./*.SQLITE
+
+db
+data
+peng
+log
+public/.*
+
+syntax: regexp
+
+\d\d\d\d-\d\d-\d\d
+\^$
+\~$
