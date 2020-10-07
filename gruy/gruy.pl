@@ -14,8 +14,7 @@ use Tie::IxHash;
 my $enc = (split /\./, $ENV{LANG} || '' )[1];
 my $input = $ARGV[0] || 'Borromini';
 my $name = $enc ? encode('windows-1252', decode($enc, $input)) : $input;
-
-my $agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.8.0';
+my $agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0';
 my $server = 'http://www.degruyter.com';
 my $path = '/databasecontent';
 my $params = [
@@ -39,6 +38,10 @@ $ua->transactor->name($agent);
 
 # fetch search results
 my $tx = $ua->get($url);
+
+# my $r = $tx->res->dom;
+# p $r;
+
 my $items = $tx->res->dom->find('div.contentItem');
 die "Nothing found for '$name'\n" unless $items->size;
 
